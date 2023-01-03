@@ -2,7 +2,7 @@
 import {ref} from "vue";
 let a=ref(1);
 const add = ()=>{
-  a++;
+  a.value++;
 }
 </script>
 
