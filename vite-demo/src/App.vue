@@ -1,15 +1,15 @@
 <script setup lang="ts">
 import {ref} from "vue";
-let a=ref(1);
-const add = ()=>{
-  a.value++;
+let a=ref(5);
+const del = ()=>{
+  a.value--;
 }
 </script>
 
 <template>
   <div>
-    {{a}}
-    <button @click="add">add</button>
+    <h1 v-show="a">{{a}}</h1>
+    <button @click="del">add</button>
   </div>
 </template>
 
