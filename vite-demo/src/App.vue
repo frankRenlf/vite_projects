@@ -1,10 +1,15 @@
 <script setup lang="ts">
-let a:number=1;
+import {ref} from "vue";
+let a=ref(1);
+const add = ()=>{
+  a++;
+}
 </script>
 
 <template>
   <div>
-{{ a }}
+    {{a}}
+    <button @click="add">add</button>
   </div>
 </template>
 
