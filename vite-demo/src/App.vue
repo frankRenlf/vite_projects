@@ -33,6 +33,7 @@ function myRef<T>(value:T){
 let x=myRef<string>('x');
 function change(){
   x.value='y';
+  console.log(x)
 }
 </script>
 
