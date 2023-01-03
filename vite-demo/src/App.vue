@@ -20,7 +20,7 @@ const del = () => {
     <button @click="del">del</button>
   </div>
   <div>
-    <li v-for="a in arr" :key="a.id">{{ a }}</li>
+    <div v-for="a in arr" :key="a.id">{{ a }}</div>
   </div>
 </template>
 
