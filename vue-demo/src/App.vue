@@ -8,14 +8,23 @@ let form = reactive({
 const submit = () => {
   console.log(form);
 };
+let list = reactive<string[]>([]);
+const add = () => {
+  let arr = ["edg", "rng", "ig"];
+  list.push(...arr);
+};
 </script>
 
 <template>
   <form>
-    <input v-model="form.name" type="text">
-    <input v-model="form.age" type="text">
+    <input v-model="form.name" type="text" />
+    <input v-model="form.age" type="text" />
     <button @click.prevent="submit">submit</button>
   </form>
+  <div v-for="l in list" :key="l">
+    {{ l }}
+  </div>
+  <button @click="add">add</button>
 </template>
 
 <style scoped>
