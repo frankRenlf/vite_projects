@@ -1,12 +1,13 @@
 <script setup lang="ts">
 import {reactive, ref} from "vue";
-let a=ref(5);
+
+let a = ref(5);
 let b = ref('')
-const arr=reactive([
-  {'id':1,'gender':'male'},
-  {'id':2,'gender':'female'},
+const arr = reactive([
+  {'id': 1, 'gender': 'male'},
+  {'id': 2, 'gender': 'female'},
 ])
-const del = ()=>{
+const del = () => {
   a.value--;
 }
 </script>
@@ -14,12 +15,12 @@ const del = ()=>{
 <template>
   <div>
     <input type="text" v-model="b">
-    <h2>{{b}}</h2>
-    <h1 v-show="a">{{a}}</h1>
+    <h2>{{ b }}</h2>
+    <h1 v-show="a">{{ a }}</h1>
     <button @click="del">del</button>
   </div>
   <div>
-    <li v-for="a in arr" :key="a.id">{{a}}</li>
+    <li v-for="a in arr" :key="a.id">{{ a }}</li>
   </div>
 </template>
 
@@ -29,9 +30,11 @@ const del = ()=>{
   padding: 1.5em;
   will-change: filter;
 }
+
 .logo:hover {
   filter: drop-shadow(0 0 2em #646cffaa);
 }
+
 .logo.vue:hover {
   filter: drop-shadow(0 0 2em #42b883aa);
 }
