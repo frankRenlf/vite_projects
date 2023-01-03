@@ -1,11 +1,21 @@
 <script setup lang="ts">
-let a:number=10;
+import { reactive } from "vue";
+
+let form = reactive({
+  name: "f",
+  age: 23,
+});
+const submit = () => {
+  console.log(form);
+};
 </script>
 
 <template>
-  <div>
-    {{ a }}
-  </div>
+  <form>
+    <input v-model="form.name" type="text">
+    <input v-model="form.age" type="text">
+    <button @click.prevent="submit">submit</button>
+  </form>
 </template>
 
 <style scoped>
