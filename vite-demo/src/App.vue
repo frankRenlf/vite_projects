@@ -1,7 +1,11 @@
 <script setup lang="ts">
-import {ref} from "vue";
+import {reactive, ref} from "vue";
 let a=ref(5);
 let b = ref('')
+const arr=reactive([
+  {'id':1,'gender':'male'},
+  {'id':2,'gender':'female'},
+])
 const del = ()=>{
   a.value--;
 }
@@ -13,6 +17,9 @@ const del = ()=>{
     <h2>{{b}}</h2>
     <h1 v-show="a">{{a}}</h1>
     <button @click="del">del</button>
+  </div>
+  <div>
+    <li v-for="a in arr" :key="a.id">{{a}}</li>
   </div>
 </template>
 
