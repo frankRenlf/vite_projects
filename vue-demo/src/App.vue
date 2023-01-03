@@ -21,6 +21,7 @@ const add = () => {
     <input v-model="form.age" type="text" />
     <button @click.prevent="submit">submit</button>
   </form>
+  <br />
   <div v-for="l in list" :key="l">
     {{ l }}
   </div>
