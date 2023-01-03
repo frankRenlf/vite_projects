@@ -9,7 +9,7 @@ const del = ()=>{
 <template>
   <div>
     <h1 v-show="a">{{a}}</h1>
-    <button @click="del">add</button>
+    <button @click="del">del</button>
   </div>
 </template>
 
