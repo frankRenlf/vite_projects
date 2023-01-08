@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { reactive } from "vue";
-
+import ShopComponent from "@/views/computed/ShopComponent.vue";
 let form = reactive({
   name: "f",
   age: 23,
@@ -26,6 +26,8 @@ const add = () => {
     {{ l }}
   </div>
   <button @click="add">add</button>
+  <router-link to="/shop">to shop</router-link>
+  <router-view></router-view>
 </template>
 
 <style scoped>
