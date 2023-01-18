@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { reactive } from "vue";
-import ShopComponent from "@/views/computed/ShopComponent.vue";
 let form = reactive({
   name: "f",
   age: 23,
