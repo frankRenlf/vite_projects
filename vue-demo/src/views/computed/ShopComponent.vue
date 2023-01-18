@@ -35,7 +35,7 @@
     <input type="text" placeholder="name" v-model="shop1.name" />
     <input type="text" placeholder="num" v-model="shop1.num" />
     <input type="text" placeholder="price" v-model="shop1.price" />
-    <button @click="add">add</button>
+    <button @click="addElement">add</button>
   </div>
 </template>
 
@@ -98,7 +98,7 @@ let total = computed<number>(() => {
   }, 0);
 });
 
-let add = () => {
+let addElement = () => {
   let tmp: Shop = { ...shop1 };
   data.push(tmp);
 };
