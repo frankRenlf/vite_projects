@@ -28,7 +28,7 @@
           <td></td>
           <td></td>
           <td></td>
-          <td align="center">总价:{{ $total }}</td>
+          <td align="center">总价:{{ total }}</td>
         </tr>
       </tfoot>
     </table>
@@ -42,11 +42,17 @@
 <script setup lang="ts">
 import { computed, reactive, ref } from "vue";
 
-type Shop = {
+class Shop {
   name: string;
   num: number;
   price: number;
-};
+
+  constructor(name: string, num: number, price: number) {
+    this.name = name;
+    this.num = num;
+    this.price = price;
+  }
+}
 const data = reactive<Shop[]>([
   {
     name: "小满的袜子",
@@ -74,11 +80,6 @@ let shop1: Shop = {
   num: 0,
   price: 0,
 };
-let shop2: Shop = {
-  name: "",
-  num: 0,
-  price: 0,
-};
 const AddAnbSub = (item: Shop, type: boolean = false): void => {
   if (item.num > 1 && !type) {
     item.num--;
@@ -91,18 +92,14 @@ const del = (index: number) => {
   data.splice(index, 1);
 };
 
-let $total = computed<number>(() => {
+let total = computed<number>(() => {
   return data.reduce((prev, next) => {
     return prev + next.num * next.price;
   }, 0);
 });
 
 let add = () => {
-  let tmp: Shop = {
-    name: shop1.name,
-    num: shop1.num,
-    price: shop1.price,
-  };
+  let tmp: Shop = { ...shop1 };
   data.push(tmp);
 };
 </script>
