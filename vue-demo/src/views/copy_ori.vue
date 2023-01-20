@@ -1,19 +1,32 @@
 <script setup lang="ts">
-import { reactive, ref, watch } from "vue";
-
-let msg1 = ref<string>("abc");
-let msg2 = ref<number>(2);
-watch([msg1, msg2], (newVal, oldVal) => {
-  console.log(newVal, oldVal);
+import { reactive } from "vue";
+let form = reactive({
+  name: "f",
+  age: 23,
 });
+const submit = () => {
+  console.log(form);
+};
+let list = reactive<string[]>([]);
+const add = () => {
+  let arr = ["edg", "rng", "ig"];
+  list.push(...arr);
+};
 </script>
 
 <template>
-  <div>
-    case1:<input type="text" v-model="msg1" />
-    <hr />
-    case2:<input type="text" v-model="msg2" />
+  <form>
+    <input v-model="form.name" type="text" />
+    <input v-model="form.age" type="text" />
+    <button @click.prevent="submit">submit</button>
+  </form>
+  <br />
+  <div v-for="l in list" :key="l">
+    {{ l }}
   </div>
+  <button @click="add">add</button>
+  <router-link to="/shop">to shop</router-link>
+  <router-view></router-view>
 </template>
 
 <style scoped>
