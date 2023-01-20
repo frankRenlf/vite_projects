@@ -3,9 +3,15 @@ import { reactive, ref, watch } from "vue";
 
 let msg1 = ref<string>("abc");
 let msg2 = ref<number>(2);
-watch([msg1, msg2], (newVal, oldVal) => {
-  console.log(newVal, oldVal);
-});
+watch(
+  [msg1, msg2],
+  (newVal, oldVal) => {
+    console.log(newVal, oldVal);
+  },
+  {
+    deep: true,
+  }
+);
 </script>
 
 <template>
