@@ -10,6 +10,7 @@ watch(
   },
   {
     deep: true,
+    flush: "pre",
   }
 );
 </script>
