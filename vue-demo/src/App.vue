@@ -1,23 +1,42 @@
 <script setup lang="ts">
-import { reactive, ref, watch } from "vue";
+import { reactive, ref, watch, watchEffect } from "vue";
 
 let msg1 = ref<string>("abc");
 let msg2 = ref<number>(2);
-watch(
-  [msg1, msg2],
-  (newVal, oldVal) => {
-    console.log(newVal, oldVal);
+let obj = reactive({
+  a: {
+    b: {
+      c: 10,
+    },
+  },
+});
+// watch(
+//   [msg1, msg2],
+//   (newVal, oldVal) => {
+//     console.log(newVal, oldVal);
+//   },
+//   {
+//     deep: true,
+//     flush: "pre",
+//   }
+// );
+watchEffect(
+  (onCleanup) => {
+    onCleanup(() => {
+      console.log("a");
+    });
+    console.log(obj.a.b.c);
   },
   {
-    deep: true,
-    flush: "pre",
+    flush: "post",
+    onTrigger() {},
   }
 );
 </script>
 
 <template>
   <div>
-    case1:<input type="text" v-model="msg1" />
+    case1:<input type="text" v-model="obj.a.b.c" />
     <hr />
     case2:<input type="text" v-model="msg2" />
   </div>
