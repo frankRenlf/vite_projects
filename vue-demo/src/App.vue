@@ -29,7 +29,9 @@ watchEffect(
   },
   {
     flush: "post",
-    onTrigger() {},
+    onTrigger(e) {
+      debugger;
+    },
   }
 );
 </script>
