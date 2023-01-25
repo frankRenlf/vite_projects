@@ -7,8 +7,10 @@ import ElComponent from "@/components/ElComponent.vue";
   <ElComponent></ElComponent>
   <ElComponent></ElComponent>
   <ElComponent></ElComponent>
+  <h3>123</h3>
+  <hr>
 </template>
 
-<style scoped>
+<style scoped lang="less">
 
 </style>
