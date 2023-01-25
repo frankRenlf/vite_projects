@@ -4,11 +4,11 @@ import ElComponent from "@/components/ElComponent.vue";
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
-    {
-      path: "/el",
-      name: "el",
-      component: ElComponent,
-    },
+    // {
+    //   path: "/el",
+    //   name: "el",
+    //   component: ElComponent,
+    // },
   ],
 });
 

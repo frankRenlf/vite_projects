@@ -1,5 +1,5 @@
-HeaderComponent.vue<template>
-
+<template>
+  <div>menu</div>
 </template>
 
 <script setup lang="ts">

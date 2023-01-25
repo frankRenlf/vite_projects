@@ -4,6 +4,7 @@
       <MenuComponent></MenuComponent>
     </div>
     <div>
+      <HeaderComponent></HeaderComponent>
       <ContentComponent></ContentComponent>
     </div>
   </div>

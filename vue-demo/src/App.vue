@@ -7,6 +7,11 @@ import IndexComponent from "@/components/layout/IndexComponent.vue";
   <IndexComponent></IndexComponent>
 </template>
 
-<style scoped lang="less">
-
+<style lang="less">
+html,
+body,
+#app {
+  height: 100%;
+  overflow: hidden;
+}
 </style>
