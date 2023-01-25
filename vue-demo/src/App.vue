@@ -1,14 +1,10 @@
 <script setup lang="ts">
 import { reactive, ref, watch, watchEffect } from "vue";
-import ElComponent from "@/components/ElComponent.vue";
+import IndexComponent from "@/components/layout/IndexComponent.vue";
 </script>
 
 <template>
-  <ElComponent></ElComponent>
-  <ElComponent></ElComponent>
-  <ElComponent></ElComponent>
-  <h3>123</h3>
-  <hr>
+  <IndexComponent></IndexComponent>
 </template>
 
 <style scoped lang="less">
