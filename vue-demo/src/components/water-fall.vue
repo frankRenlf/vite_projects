@@ -18,6 +18,12 @@ import { ref, reactive, onMounted } from "vue";
 const dp = defineProps<{
   list: any[];
 }>();
+defineExpose({
+  ex:{
+    address: "bj",
+    cur: 2023,
+  }
+})
 const waterList = reactive<any[]>([]);
 const init = () => {
   const heightList: any[] = [];

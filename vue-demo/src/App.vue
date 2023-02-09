@@ -172,8 +172,9 @@ const list = [
     background: "green",
   },
 ];
+let waterFall = ref<InstanceType<typeof waterFallVue>>();
 onMounted(() => {
-
+  console.log(waterFall.value.ex)
 })
 
 </script>
