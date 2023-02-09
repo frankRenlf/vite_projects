@@ -7,17 +7,19 @@ let obj = reactive({
   age: 23,
 });
 let list1 = reactive({
-  address:'',
+  address: "",
+  current: 0,
 });
-let ret = (obj2: object) => {
-  console.log(obj2);
-  list1.address = obj2.address;
+let ret = (obj3: object) => {
+  console.log(obj3);
+  list1.address = obj3.address;
+  list1.current = obj3.current;
 }
 </script>
 
 <template>
   <div>{{ list1 }}</div>
-  <IndexComponent :obj1="obj" @on-click1="ret"></IndexComponent>
+  <IndexComponent :obj1="obj" @on-click="ret"></IndexComponent>
 </template>
 
 <style lang="less">

@@ -16,27 +16,26 @@
 import HeaderComponent from "@/components/layout/HeaderComponent.vue";
 import MenuComponent from "@/components/layout/MenuComponent.vue";
 import ContentComponent from "@/components/layout/ContentComponent.vue";
-import { reactive } from "vue";
+import {reactive} from "vue";
 
 defineProps<{
   obj1: object;
 }>();
-// const emit = defineEmits<{
-//   (
-//     e: "on-click",
-//     obj2: {
-//       address: "hz";
-//       current: "2023";
-//     }
-//   ): void;
-// }>();
-let obj2 = reactive({
+let obj = reactive({
   address: "hz",
-  current: "2023",
-});
-const emit = defineEmits(["on-click1"]);
+  current: 2023,
+})
+const emit = defineEmits<{
+  (
+      e: "on-click",
+      obj2: {
+        address: string;
+        current: number;
+      }
+  ): void;
+}>();
 const clickTap = () => {
-  emit("on-click1", obj2);
+  emit("on-click", obj);
 };
 </script>
 
