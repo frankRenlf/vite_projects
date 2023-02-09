@@ -1,5 +1,5 @@
 <template>
-  <div>{{ obj1 }} ------</div>
+  <div>{{ obj2 }} ------</div>
   <button @click="clickTap">emit</button>
   <div>
     <div>
@@ -19,7 +19,7 @@ import ContentComponent from "@/components/layout/ContentComponent.vue";
 import {reactive} from "vue";
 
 defineProps<{
-  obj1: object;
+  obj2: object;
 }>();
 let obj = reactive({
   address: "hz",

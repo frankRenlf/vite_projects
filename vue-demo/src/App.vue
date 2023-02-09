@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import {reactive, ref, watch, watchEffect} from "vue";
 import IndexComponent from "@/components/layout/IndexComponent.vue";
+import ElComponent from "@/components/ElComponent.vue";
 
 let obj = reactive({
   name: "frank",
@@ -19,7 +20,7 @@ let ret = (obj3: object) => {
 
 <template>
   <div>{{ list1 }}</div>
-  <IndexComponent :obj1="obj" @on-click="ret"></IndexComponent>
+  <IndexComponent :obj2="obj" @on-click="ret"></IndexComponent>
 </template>
 
 <style lang="less">
