@@ -1,193 +1,49 @@
 <template>
-  <div>
-
-  </div>
-  <waterFallVue ref="waterFall" :list="list"></waterFallVue>
+  <h2>App</h2>
+  <h3>foo: {{ stateAsRefs.foo }}</h3>
+  <h3>bar: {{ stateAsRefs.bar }}</h3>
+  <h3>foo2: {{ foo }}</h3>
+  <h3>bar2: {{ bar }}</h3>
+  <input type="text" ref="ip">
+  <text-one></text-one>
 </template>
 
 <script setup lang="ts">
-import {ref, reactive, onMounted, nextTick} from "vue";
-import waterFallVue from "./components/water-fall.vue";
-import IndexComponent from "@/components/layout/IndexComponent.vue";
+import {onMounted, provide, reactive, ref, toRefs} from "vue";
+import TextOne from "@/components/TextOne.vue";
+/*
+toRefs:
+  将响应式对象中所有属性包装为ref对象, 并返回包含这些ref对象的普通对象
+  应用: 当从合成函数返回响应式对象时，toRefs 非常有用，
+        这样消费组件就可以在不丢失响应式的情况下对返回的对象进行分解使用
+*/
+const ip = ref<HTMLElement>();
 
-const list = [
-  {
-    height: 300,
-    background: "red",
-  },
-  {
-    height: 400,
-    background: "pink",
-  },
-  {
-    height: 500,
-    background: "blue",
-  },
-  {
-    height: 200,
-    background: "green",
-  },
-  {
-    height: 300,
-    background: "gray",
-  },
-  {
-    height: 400,
-    background: "#CC00FF",
-  },
-  {
-    height: 200,
-    background: "black",
-  },
-  {
-    height: 100,
-    background: "#996666",
-  },
-  {
-    height: 500,
-    background: "skyblue",
-  },
-  {
-    height: 300,
-    background: "#993366",
-  },
-  {
-    height: 100,
-    background: "#33FF33",
-  },
-  {
-    height: 400,
-    background: "skyblue",
-  },
-  {
-    height: 200,
-    background: "#6633CC",
-  },
-  {
-    height: 300,
-    background: "#666699",
-  },
-  {
-    height: 300,
-    background: "#66CCFF",
-  },
-  {
-    height: 300,
-    background: "skyblue",
-  },
-  {
-    height: 200,
-    background: "#CC3366",
-  },
-  {
-    height: 200,
-    background: "#CC9966",
-  },
-  {
-    height: 200,
-    background: "#FF00FF",
-  },
-  {
-    height: 500,
-    background: "#990000",
-  },
-  {
-    height: 400,
-    background: "red",
-  },
-  {
-    height: 100,
-    background: "#999966",
-  },
-  {
-    height: 200,
-    background: "#CCCC66",
-  },
-  {
-    height: 300,
-    background: "#FF33FF",
-  },
-  {
-    height: 400,
-    background: "#FFFF66",
-  },
-  {
-    height: 200,
-    background: "red",
-  },
-  {
-    height: 100,
-    background: "skyblue",
-  },
-  {
-    height: 200,
-    background: "#33CC00",
-  },
-  {
-    height: 300,
-    background: "#330033",
-  },
-  {
-    height: 100,
-    background: "#0066CC",
-  },
-  {
-    height: 200,
-    background: "skyblue",
-  },
-  {
-    height: 100,
-    background: "#006666",
-  },
-  {
-    height: 200,
-    background: "yellow",
-  },
-  {
-    height: 300,
-    background: "yellow",
-  },
-  {
-    height: 100,
-    background: "#33CCFF",
-  },
-  {
-    height: 400,
-    background: "yellow",
-  },
-  {
-    height: 400,
-    background: "yellow",
-  },
-  {
-    height: 200,
-    background: "#33FF00",
-  },
-  {
-    height: 300,
-    background: "yellow",
-  },
-  {
-    height: 100,
-    background: "green",
-  },
-];
-let waterFall = ref<InstanceType<typeof waterFallVue>>();
 onMounted(() => {
-  console.log(waterFall.value.ex)
+  ip.value && ip.value.focus()
 })
+const state = reactive({
+  foo: "a",
+  bar: "b",
+});
+provide("test1", "from app");
+const stateAsRefs = toRefs(state);
 
+setTimeout(() => {
+  state.foo += "++";
+  state.bar += "++";
+}, 2000);
+
+const {foo, bar} = useReatureX();
+
+function useReatureX() {
+
+
+  setTimeout(() => {
+    state.foo += "++";
+    state.bar += "++";
+  }, 2000);
+
+  return toRefs(state);
+}
 </script>
-
-<style lang="less">
-#app,
-html,
-body {
-  height: 100%;
-}
-
-* {
-  padding: 0;
-  margin: 0;
-}
-</style>
