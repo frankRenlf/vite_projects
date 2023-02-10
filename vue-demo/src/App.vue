@@ -1,7 +1,5 @@
 <template>
-  <h2>App</h2>
-  <input v-model="keyword" placeholder="搜索关键字" />
-  <p>{{ keyword }}</p>
+  <PropsEmits :ps1="obj1" :ps2="obj2" @click1="ret"></PropsEmits>
 </template>
 
 <script setup lang="ts">
@@ -13,32 +11,26 @@ customRef:
   使用 customRef 实现 debounce 的示例
 */
 
-import { ref, customRef } from "vue";
+import { ref, customRef, isReactive, reactive } from "vue";
+import PropsEmits from "@/components/PropsEmits.vue";
 
-const keyword = useDebouncedRef("", 500);
-console.log(keyword);
-
-/* 
-实现函数防抖的自定义ref
-*/
-function useDebouncedRef<T>(value: T, delay = 200) {
-  let timeout: number;
-  return customRef((track, trigger) => {
-    return {
-      get() {
-        // 告诉Vue追踪数据
-        track();
-        return value;
-      },
-      set(newValue: T) {
-        clearTimeout(timeout);
-        timeout = setTimeout(() => {
-          value = newValue;
-          // 告诉Vue去触发界面更新
-          trigger();
-        }, delay);
-      },
-    };
-  });
+const obj1: object = {
+  a: 1,
+  b: "abc",
+};
+const obj2: object = {
+  a: 2,
+  b: "efg",
+};
+interface Person {
+  name: string;
+  age: number;
 }
+let retVal = reactive<Person[]>([]);
+console.log(retVal);
+const ret = (val: object) => {
+  retVal.push(val);
+  console.log(retVal);
+  console.log(isReactive(retVal));
+};
 </script>
