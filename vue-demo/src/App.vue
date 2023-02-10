@@ -1,5 +1,5 @@
 <template>
-  <PropsEmits :ps1="obj1" :ps2="obj2" @click1="ret"></PropsEmits>
+  <PropsEmits :ps1="obj1" :ps2="obj2" @click1="ret" ref="pe"></PropsEmits>
 </template>
 
 <script setup lang="ts">
@@ -11,8 +11,9 @@ customRef:
   使用 customRef 实现 debounce 的示例
 */
 
-import { ref, customRef, isReactive, reactive } from "vue";
+import { ref, customRef, isReactive, reactive, onMounted } from "vue";
 import PropsEmits from "@/components/PropsEmits.vue";
+import { Person } from "@/stores/Person";
 
 const obj1: object = {
   a: 1,
@@ -22,15 +23,17 @@ const obj2: object = {
   a: 2,
   b: "efg",
 };
-interface Person {
-  name: string;
-  age: number;
-}
-let retVal = reactive<Person[]>([]);
+
+let retVal = reactive<Person<string>[]>([]);
 console.log(retVal);
-const ret = (val: object) => {
+const ret = (val: Person<string>) => {
+  retVal.push(val);
   retVal.push(val);
   console.log(retVal);
   console.log(isReactive(retVal));
 };
+let pe = ref<InstanceType<typeof PropsEmits>>();
+onMounted(() => {
+  console.log(pe.value.list);
+});
 </script>
