@@ -1,25 +1,24 @@
 <script setup>
-import { onMounted, ref } from "vue";
-import ChildCom from "@/components/ChildCom.vue";
+import { ref } from "vue";
+import BlogPost from "@/components/BlogPost.vue";
 
-const ip = ref();
-const cc = ref();
-onMounted(() => {
-  console.log(ip.value);
-  console.log(cc.value.a);
-  cc.value.a=2;
-  cc.value.b="aaa";
-});
+const posts = ref([
+  { id: 1, title: "My journey with Vue" },
+  { id: 2, title: "Blogging with Vue" },
+  { id: 3, title: "Why Vue is so fun" },
+]);
+
+const postFontSize = ref(1);
 </script>
 
 <template>
-  <input
-    type="text"
-    :ref="
-      (el) => {
-        ip = el;
-      }
-    "
-  />
-  <child-com ref="cc"></child-com>
+  <div>
+    <BlogPost
+      v-for="post in posts"
+      :key="post.id"
+      :title="post.title"
+      @enlarge-text="postFontSize += 0.1"
+      :style="{ fontSize: postFontSize + 'em' }"
+    ></BlogPost>
+  </div>
 </template>
