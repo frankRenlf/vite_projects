@@ -1,79 +1,50 @@
-<template>
-  <PropsEmits :ps1="obj1" :ps2="obj2" @click1="ret" ref="pe"></PropsEmits>
-  <hr />
-  <DirectTest v-move:test.a="{ background: value }"></DirectTest>
-  <button @click="cp">p1 cha</button>
-</template>
+<script setup>
+import { ref } from "vue";
+import TodoItem from "@/components/TodoItem.vue";
 
-<script setup lang="ts">
-/*
-customRef:
-  创建一个自定义的 ref，并对其依赖项跟踪和更新触发进行显式控制
+const newTodoText = ref("");
+const todos = ref([
+  {
+    id: 1,
+    title: "Do the dishes",
+  },
+  {
+    id: 2,
+    title: "Take out the trash",
+  },
+  {
+    id: 3,
+    title: "Mow the lawn",
+  },
+]);
 
-需求: 
-  使用 customRef 实现 debounce 的示例
-*/
+let nextTodoId = 4;
 
-import {
-  ref,
-  customRef,
-  isReactive,
-  reactive,
-  onMounted,
-  inject,
-  provide,
-  Directive,
-  DirectiveBinding,
-  nextTick,
-  watch,
-  watchEffect,
-} from "vue";
-import PropsEmits from "@/components/PropsEmits.vue";
-import { Person } from "@/stores/Person";
-import DirectTest from "@/components/DirectTest.vue";
-
-const obj1: object = {
-  a: 1,
-  b: "abc",
-};
-const obj2: object = {
-  a: 2,
-  b: "efg",
-};
-
-let retVal = reactive<Person<string>[]>([]);
-console.log(retVal);
-const ret = (val: Person<string>) => {
-  retVal.push(val);
-  retVal.push(val);
-  console.log(retVal);
-  console.log(isReactive(retVal));
-};
-let pe = ref<InstanceType<typeof PropsEmits>>();
-onMounted(() => {
-  console.log("onMounted", pe.value.list);
-});
-nextTick(() => {
-  console.log("nextTick", pe.value.list);
-});
-let p1 = reactive<Person<number>>(new Person("lily", 11, 22));
-watch([p1], () => {
-  console.log("watch p1 change");
-});
-watchEffect(() => {
-  console.log("watchEffect p1 change", p1.name);
-});
-provide<Person<number>>("p1", p1);
-// p1.name = "lily2";
-let value = ref<string>("");
-type Dir = {
-  background: string;
-};
-const vMove: Directive = (el, binding) => {
-  // el.style.background = binding.value.background;
-  console.log(binding.value);
-};
-const cp = () => {
-  p1.name = "cp";
-};
+function addNewTodo() {
+  todos.value.push({
+    id: nextTodoId++,
+    title: newTodoText.value,
+  });
+  newTodoText.value = "";
+}
 </script>
+
+<template>
+  <form v-on:submit.prevent="addNewTodo">
+    <label for="new-todo">Add a todo</label>
+    <input
+      v-model="newTodoText"
+      id="new-todo"
+      placeholder="E.g. Feed the cat"
+    />
+    <button>Add</button>
+  </form>
+  <ul>
+    <todo-item
+      v-for="(todo, index) in todos"
+      :key="todo.id"
+      :title="todo.title"
+      @remove="todos.splice(index, 1)"
+    ></todo-item>
+  </ul>
+</template>

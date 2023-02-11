@@ -1,10 +1,10 @@
 import { createApp } from "vue";
 import { createPinia } from "pinia";
-import "./assets/css/reset.less";
+// import "./assets/css/reset.less";
 
 import App from "./App.vue";
 
-import "./assets/main.css";
+// import "./assets/main.css";
 
 const app = createApp(App);
 
