@@ -19,6 +19,13 @@ const postFontSize = ref(1);
       :title="post.title"
       @enlarge-text="postFontSize += 0.1"
       :style="{ fontSize: postFontSize + 'em' }"
-    ></BlogPost>
+    >
+      slot test {{ post.id }}
+    </BlogPost>
   </div>
+  <hr />
+  <table>
+    <BlogPost key="44" title="tr"></BlogPost>
+    <tr is="vue:BlogPost" key="44" title="tr"></tr>
+  </table>
 </template>
