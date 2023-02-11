@@ -11,7 +11,15 @@ customRef:
   使用 customRef 实现 debounce 的示例
 */
 
-import { ref, customRef, isReactive, reactive, onMounted } from "vue";
+import {
+  ref,
+  customRef,
+  isReactive,
+  reactive,
+  onMounted,
+  inject,
+  provide,
+} from "vue";
 import PropsEmits from "@/components/PropsEmits.vue";
 import { Person } from "@/stores/Person";
 
@@ -36,4 +44,7 @@ let pe = ref<InstanceType<typeof PropsEmits>>();
 onMounted(() => {
   console.log(pe.value.list);
 });
+let p1 = reactive<Person<number>>(new Person("lily", 11, 22));
+provide<Person<number>>("p1", p1);
+p1.name="lily2";
 </script>

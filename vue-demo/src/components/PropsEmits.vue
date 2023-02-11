@@ -6,7 +6,7 @@
 
 <script setup lang="ts">
 import { Person } from "@/stores/Person";
-import { reactive } from "vue";
+import { inject, provide, reactive } from "vue";
 
 let obtain = defineProps<{
   ps1: object;
@@ -24,6 +24,11 @@ const list = reactive<number[]>([4, 5, 6]);
 defineExpose({
   list,
 });
+let p_1: Person<number> | undefined = inject<Person<number>>("p1");
+console.log(p_1);
+p_1=1
+// p_1?.name = "lily2";
+console.log(p_1);
 </script>
 
 <style scoped></style>
