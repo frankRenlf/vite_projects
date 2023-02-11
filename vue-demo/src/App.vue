@@ -1,5 +1,6 @@
 <template>
   <PropsEmits :ps1="obj1" :ps2="obj2" @click1="ret" ref="pe"></PropsEmits>
+  <h2 @myDirective="22">myDirective</h2>
 </template>
 
 <script setup lang="ts">
@@ -18,7 +19,7 @@ import {
   reactive,
   onMounted,
   inject,
-  provide,
+  provide, Directive, DirectiveBinding,
 } from "vue";
 import PropsEmits from "@/components/PropsEmits.vue";
 import { Person } from "@/stores/Person";
@@ -46,5 +47,8 @@ onMounted(() => {
 });
 let p1 = reactive<Person<number>>(new Person("lily", 11, 22));
 provide<Person<number>>("p1", p1);
-p1.name="lily2";
+p1.name = "lily2";
+const myDirective: Directive = (msg:number) => {
+  console.log("Directive",msg);
+};
 </script>
