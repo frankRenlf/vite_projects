@@ -55,7 +55,7 @@ nextTick(() => {
 });
 let p1 = reactive<Person<number>>(new Person("lily", 11, 22));
 provide<Person<number>>("p1", p1);
-p1.name = "lily2";
+// p1.name = "lily2";
 let value = ref<string>("");
 type Dir = {
   background: string;

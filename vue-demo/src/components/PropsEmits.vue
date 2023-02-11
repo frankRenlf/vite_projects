@@ -24,10 +24,13 @@ const list = reactive<number[]>([4, 5, 6]);
 defineExpose({
   list,
 });
-let p_1: Person<number> | undefined = inject<Person<number>>("p1");
+let p_1: Person<number> = inject<Person<number>>(
+  "p1",
+  new Person<number>("null", 0, 0)
+);
 console.log(p_1);
 // p_1=1
-// p_1?.name = "lily2";
+p_1.name = "child change";
 console.log(p_1);
 </script>
 
