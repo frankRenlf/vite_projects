@@ -26,7 +26,7 @@ defineExpose({
 });
 let p_1: Person<number> | undefined = inject<Person<number>>("p1");
 console.log(p_1);
-p_1=1
+// p_1=1
 // p_1?.name = "lily2";
 console.log(p_1);
 </script>
