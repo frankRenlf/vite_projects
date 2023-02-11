@@ -8,8 +8,13 @@ const props = defineProps({
 });
 
 const sortKey = ref("");
-const sortOrders = ref(props.columns.reduce((o, key) => ((o[key] = 1), o), {}));
-console.log(sortOrders.value)
+const sortOrders = ref(
+  props.columns.reduce((o, key) => {
+    o[key] = 1;
+    return o;
+  }, {})
+);
+console.log(sortOrders.value);
 const filteredData = computed(() => {
   let { data, filterKey } = props;
   if (filterKey) {
