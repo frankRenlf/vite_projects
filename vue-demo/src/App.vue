@@ -2,6 +2,7 @@
   <PropsEmits :ps1="obj1" :ps2="obj2" @click1="ret" ref="pe"></PropsEmits>
   <hr />
   <DirectTest v-move:test.a="{ background: value }"></DirectTest>
+  <button @click="cp">p1 cha</button>
 </template>
 
 <script setup lang="ts">
@@ -24,6 +25,8 @@ import {
   Directive,
   DirectiveBinding,
   nextTick,
+  watch,
+  watchEffect,
 } from "vue";
 import PropsEmits from "@/components/PropsEmits.vue";
 import { Person } from "@/stores/Person";
@@ -54,6 +57,12 @@ nextTick(() => {
   console.log("nextTick", pe.value.list);
 });
 let p1 = reactive<Person<number>>(new Person("lily", 11, 22));
+watch([p1], () => {
+  console.log("watch p1 change");
+});
+watchEffect(() => {
+  console.log("watchEffect p1 change", p1.name);
+});
 provide<Person<number>>("p1", p1);
 // p1.name = "lily2";
 let value = ref<string>("");
@@ -63,5 +72,8 @@ type Dir = {
 const vMove: Directive = (el, binding) => {
   // el.style.background = binding.value.background;
   console.log(binding.value);
+};
+const cp = () => {
+  p1.name = "cp";
 };
 </script>
