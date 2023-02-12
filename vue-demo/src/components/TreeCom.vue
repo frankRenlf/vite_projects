@@ -1,5 +1,10 @@
 <template>
-  <div class="tree" v-for="item in data" :key="item.name">
+  <div
+    @click.stop="clickTap(item, $event)"
+    class="tree"
+    v-for="item in data"
+    :key="item.name"
+  >
     <input type="checkbox" v-model="item.checked" name="" id="" /><span>{{
       item.name
     }}</span>
@@ -13,7 +18,9 @@ import { TreeList } from "@/stores/TreeList";
 defineProps<{
   data: TreeList;
 }>();
-
+const clickTap = (item: TreeList, event: any) => {
+  console.log(item, event);
+};
 </script>
 
 <style scoped>
