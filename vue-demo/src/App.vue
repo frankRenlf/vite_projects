@@ -2,22 +2,39 @@
 该示例创建了一个可复用网格组件，并结合外部数据使用它。
 -->
 
-<script setup>
-import GridCom from "@/components/GridCom.vue";
-import { ref } from "vue";
+<script setup lang="ts">
+import { reactive } from "vue";
+import { TreeList } from "@/stores/TreeList";
+import TreeCom from "./components/TreeCom.vue";
 
-const searchQuery = ref("");
-const gridColumns = ["name", "power"];
-const gridData = [
-  { name: "Chuck Norris", power: Infinity },
-  { name: "Bruce Lee", power: 9000 },
-  { name: "Jackie Chan", power: 7000 },
-  { name: "Jet Li", power: 8000 },
-];
+const data = reactive<TreeList[]>([
+  {
+    name: "no.1",
+    children: [
+      {
+        name: "no.1-1",
+        children: [
+          {
+            name: "no.1-1-1",
+          },
+        ],
+      },
+    ],
+  },
+  {
+    name: "no.2",
+    children: [
+      {
+        name: "no.2-1",
+      },
+    ],
+  },
+  {
+    name: "no.3",
+  },
+]);
 </script>
 
 <template>
-  <form id="search">Search <input name="query" v-model="searchQuery" /></form>
-  <GridCom :data="gridData" :columns="gridColumns" :filter-key="searchQuery">
-  </GridCom>
+  <TreeCom :data="data"></TreeCom>
 </template>

@@ -1,0 +1,16 @@
+<template>
+  <div v-for="item in data" :key="item.name">
+    <input type="checkbox" name="" id=""/><span>{{ item.name }}</span>
+    <TreeCom v-if="item?.children?.length" :data="item.children"></TreeCom>
+  </div>
+</template>
+
+<script setup lang="ts">
+import {TreeList} from "@/stores/TreeList";
+
+defineProps<{
+  data: TreeList
+}>();
+</script>
+
+<style scoped></style>
