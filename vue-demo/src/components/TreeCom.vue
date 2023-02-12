@@ -13,6 +13,7 @@ import { TreeList } from "@/stores/TreeList";
 defineProps<{
   data: TreeList;
 }>();
+
 </script>
 
 <style scoped>
