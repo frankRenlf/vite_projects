@@ -1,5 +1,5 @@
 export interface TreeList {
   name: string;
-  icon?: string;
+  checked: boolean;
   children?: TreeList[] | [];
 }

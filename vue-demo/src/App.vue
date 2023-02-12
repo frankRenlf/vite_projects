@@ -10,12 +10,15 @@ import TreeCom from "./components/TreeCom.vue";
 const data = reactive<TreeList[]>([
   {
     name: "no.1",
+    checked: false,
     children: [
       {
         name: "no.1-1",
+        checked: false,
         children: [
           {
             name: "no.1-1-1",
+            checked: true,
           },
         ],
       },
@@ -23,14 +26,17 @@ const data = reactive<TreeList[]>([
   },
   {
     name: "no.2",
+    checked: false,
     children: [
       {
         name: "no.2-1",
+        checked: false,
       },
     ],
   },
   {
     name: "no.3",
+    checked: false,
   },
 ]);
 </script>
