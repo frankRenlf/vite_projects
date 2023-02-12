@@ -1,5 +1,5 @@
 <template>
-  <div v-for="item in data" :key="item.name">
+  <div class="tree" v-for="item in data" :key="item.name">
     <input type="checkbox" v-model="item.checked" name="" id="" /><span>{{
       item.name
     }}</span>
@@ -15,4 +15,8 @@ defineProps<{
 }>();
 </script>
 
-<style scoped></style>
+<style scoped>
+.tree {
+  margin-left: 10px;
+}
+</style>
