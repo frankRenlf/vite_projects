@@ -19,7 +19,7 @@ defineProps<{
   data: TreeList;
 }>();
 const clickTap = (item: TreeList, event: any) => {
-  console.log(item, event);
+  console.log(item, event.target.innerHTML);
 };
 </script>
 
