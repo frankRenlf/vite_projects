@@ -11,7 +11,6 @@ const app = createApp(App);
 
 app.use(createPinia());
 // app.use(router);
-
+// app.component("TodoItem", TodoItem);
 app.mount("#app");
 // console.log(app.config);
-// app.component("TodoItem", TodoItem);
