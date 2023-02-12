@@ -3,6 +3,7 @@ import { createPinia } from "pinia";
 // import "./assets/css/reset.less";
 
 import App from "./App.vue";
+import TodoItem from "@/components/TodoItem.vue";
 
 // import "./assets/main.css";
 
@@ -13,3 +14,4 @@ app.use(createPinia());
 
 app.mount("#app");
 // console.log(app.config);
+// app.component("TodoItem", TodoItem);
