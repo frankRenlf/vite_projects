@@ -11,9 +11,17 @@ const id = ref("1");
 const url = computed(() => baseUrl + id.value);
 
 const { data, error, retry } = useFetch(url);
+const vDemo = {
+  mounted(el: HTMLElement, binding: any) {
+    console.log(el, binding);
+    el.style.color = binding.value.color;
+    el.innerText = binding.value.text;
+  },
+};
 </script>
 
 <template>
+  <div v-demo="{ color: 'green', text: 'hello!' }"></div>
   <SlotCom>
     <template #item="item">
       <p>{{ item.id }}</p>
@@ -28,6 +36,9 @@ const { data, error, retry } = useFetch(url);
     <p>Oops! Error encountered: {{ error.message }}</p>
     <button @click="retry">Retry</button>
   </div>
-  <div v-else-if="data">Data loaded: <pre>{{ data }}</pre></div>
+  <div v-else-if="data">
+    Data loaded:
+    <pre>{{ data }}</pre>
+  </div>
   <div v-else>Loading...</div>
 </template>
