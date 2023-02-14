@@ -1,13 +1,13 @@
 import { ref, isRef, unref, watchEffect } from "vue";
 
 export function useFetch(url: any) {
-  const data = ref<object>();
-  const error = ref<object>();
+  const data = ref(null);
+  const error = ref(null);
 
   async function doFetch() {
     // reset state before fetching..
-    // data.value = null;
-    // error.value = null;
+    data.value = null;
+    error.value = null;
 
     // resolve the url value synchronously, so it's tracked as a
     // dependency by watchEffect()
@@ -40,10 +40,8 @@ export function useFetch(url: any) {
 function timeout() {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
-      const val = Math.random();
-      console.log(val);
-      if (val > 0.3) {
-        resolve("Success");
+      if (Math.random() > 0.3) {
+        resolve("success");
       } else {
         reject(new Error("Random Error"));
       }
