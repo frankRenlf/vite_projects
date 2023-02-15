@@ -14,9 +14,22 @@ let open = ref(false);
       <button @click="open = false">Close</button>
     </div>
   </Teleport>
+  <hr />
   <input type="radio" v-model="cur" :value="App_transitionGroup1" />
   <input type="radio" v-model="cur" :value="App_transitionGroup2" />
-  <keep-alive :include="['App_transitionGroup2']">
+  <hr />
+  <keep-alive :include="['App_transitionGroup1', 'App_transitionGroup2']">
     <component :is="cur"></component>
   </keep-alive>
 </template>
+
+<style scoped>
+.modal {
+  position: fixed;
+  z-index: 999;
+  top: 20%;
+  left: 50%;
+  width: 300px;
+  margin-left: -150px;
+}
+</style>
