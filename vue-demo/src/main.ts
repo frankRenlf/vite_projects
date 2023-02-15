@@ -11,6 +11,7 @@ const app = createApp(App);
 app.use(i18n, {
   greetings: {
     hello: "Bonjourxxxxxxxxxx!",
+    hi: "what's up",
   },
 });
 app.use(createPinia());

@@ -3,5 +3,5 @@
 </script>
 
 <template>
-<div>{{ $translate('greetings.hello') }}</div>
+<div>{{ $translate('greetings.hi') }}</div>
 </template>
