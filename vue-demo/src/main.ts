@@ -3,7 +3,6 @@ import { createPinia } from "pinia";
 // import "./assets/css/reset.less";
 
 import App from "./App.vue";
-import TodoItem from "@/components/TodoItem.vue";
 import i18n from "@/plugin/i18n";
 // import "./assets/main.css";
 
