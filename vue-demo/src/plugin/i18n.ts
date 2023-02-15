@@ -1,5 +1,4 @@
 // plugins/i18n.js
-
 export default {
   install: (app: any, options: any) => {
     // 注入一个全局可用的 $translate() 方法
