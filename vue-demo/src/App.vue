@@ -1,8 +1,13 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { ref } from "vue";
+
+let display = ref(false);
+</script>
 
 <template>
+  <button @click="display = !display">dispaly</button>
   <transition>
-    <div>{{ $translate("greetings.hi") }}</div>
+    <div v-show="display">{{ $translate("greetings.hi") }}</div>
   </transition>
 </template>
 
