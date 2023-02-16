@@ -91,7 +91,7 @@ let toggle = ref(false);
     <input
       type="number"
       ref="ip"
-      v-model.trim="newTodoText"
+      v-model.trim.number="newTodoText"
       id="new-todo"
       placeholder="E.g. Feed the cat"
       @keyup.enter.prevent="addNewTodo"
