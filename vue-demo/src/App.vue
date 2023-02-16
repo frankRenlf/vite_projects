@@ -2,6 +2,7 @@
 import { useCounterStore } from "@/stores/counter";
 import PiniaTest from "@/components/PiniaTest.vue";
 import SlotCom from "@/components/SlotCom.vue";
+import Fetch from "@/Fetch.vue";
 const uc = useCounterStore();
 </script>
 
@@ -11,4 +12,5 @@ const uc = useCounterStore();
   <SlotCom>
     <template #item="item1"> {{ item1.id }}  </template>
   </SlotCom>
+  <Fetch></Fetch>
 </template>
