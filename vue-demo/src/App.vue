@@ -13,16 +13,22 @@ const uc = useCounterStore();
       <a href="/" ref="skipLink" class="skip-link">Skip to main content</a>
     </li>
   </ul>
+  <h2>router-link</h2>
   <router-link to="/AppFetch">AppFetch</router-link>
   <hr />
-    <router-link to="/App_transitionGroup2">App_transitionGroup2</router-link>
+  <router-link to="/App_transitionGroup1">App_transitionGroup1</router-link>
   <hr />
-  <router-view v-slot="{ App_transitionGroup2 }">
-    <keep-alive>
-      <component :is="App_transitionGroup2" />
-    </keep-alive>
+  <router-link to="/App_transitionGroup2">App_transitionGroup2</router-link>
+  <hr />
+  <h2>router-view</h2>
+  <!--  <router-view></router-view>-->
+  <router-view v-slot="{ Component }">
+    <transition name="why">
+      <keep-alive :include="['AppFetch', 'App_transitionGroup1']">
+        <component :is="Component"></component>
+      </keep-alive>
+    </transition>
   </router-view>
-
 </template>
 
 <style>
