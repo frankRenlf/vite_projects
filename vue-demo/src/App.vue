@@ -24,7 +24,7 @@ const uc = useCounterStore();
   <!--  <router-view></router-view>-->
   <router-view v-slot="{ Component }">
     <transition name="why">
-      <keep-alive :include="['AppFetch', 'App_transitionGroup1']">
+      <keep-alive :include="['AppFetch', 'App_transitionGroup1', 'App_transitionGroup2']">
         <component :is="Component"></component>
       </keep-alive>
     </transition>
