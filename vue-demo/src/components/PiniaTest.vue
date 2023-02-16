@@ -5,7 +5,6 @@
 
 <script setup lang="ts">
 import { useCounterStore } from "@/stores/counter";
-import { storeToRefs } from "pinia";
 
 const uc = useCounterStore();
 </script>

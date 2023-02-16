@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { useCounterStore } from "@/stores/counter";
-import { storeToRefs } from "pinia";
 import PiniaTest from "@/components/PiniaTest.vue";
 const uc = useCounterStore();
 </script>
