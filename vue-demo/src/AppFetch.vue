@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import { ref, watchEffect } from "vue";
 
 const API_URL = `https://api.github.com/repos/vuejs/core/commits?per_page=3&sha=`;
@@ -22,19 +22,19 @@ watchEffect(async () => {
    */
 });
 
-function truncate(v) {
+function truncate(v: any) {
   const newline = v.indexOf("\n");
   return newline > 0 ? v.slice(0, newline) : v;
 }
 
-function formatDate(v) {
+function formatDate(v: any) {
   return v.replace(/[TZ]/g, " ");
 }
 </script>
 
 <template>
   <h1>Latest Vue Core Commits</h1>
-  <template v-for="branch in branches">
+  <template v-for="branch in branches" :key="branch">
     <input
       type="radio"
       :id="branch"
@@ -46,7 +46,7 @@ function formatDate(v) {
   </template>
   <p>vuejs/vue@{{ currentBranch }}</p>
   <ul>
-    <li v-for="{ html_url, sha, author, commit } in commits">
+    <li v-for="{ html_url, sha, author, commit } in commits" :key="author">
       <a :href="html_url" target="_blank" class="commit">{{
         sha.slice(0, 7)
       }}</a>
