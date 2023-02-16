@@ -6,13 +6,15 @@
 
 <script setup lang="ts">
 import { Person } from "@/stores/Person";
-import { inject, provide, reactive } from "vue";
+import { inject, reactive } from "vue";
 
 let obtain = defineProps<{
   ps1: object;
   ps2: object;
 }>();
-const emits1 = defineEmits(["click1"]);
+const emits1 = defineEmits<{
+  (e: "click1", objChild1: Person<string>): void;
+}>();
 let objChild1: Person<string> = {
   name: "frank",
   age: 23,
