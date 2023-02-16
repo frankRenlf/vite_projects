@@ -33,6 +33,8 @@ function formatDate(v: any) {
 </script>
 
 <template>
+  <router-link to="/PiniaTest"></router-link>
+  <router-view></router-view>
   <h1>Latest Vue Core Commits</h1>
   <template v-for="branch in branches" :key="branch">
     <input

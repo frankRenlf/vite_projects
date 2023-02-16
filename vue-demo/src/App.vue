@@ -10,16 +10,19 @@ const uc = useCounterStore();
 <template>
   <ul class="skip-links">
     <li>
-      <a href="#main" ref="skipLink" class="skip-link">Skip to main content</a>
+      <a href="/" ref="skipLink" class="skip-link">Skip to main content</a>
     </li>
   </ul>
+  <router-link to="/AppFetch">AppFetch</router-link>
+  <hr />
+    <router-link to="/App_transitionGroup2">App_transitionGroup2</router-link>
+  <hr />
+  <router-view v-slot="{ App_transitionGroup2 }">
+    <keep-alive>
+      <component :is="App_transitionGroup2" />
+    </keep-alive>
+  </router-view>
 
-  <pinia-test></pinia-test>
-  <div>{{ uc.count }}</div>
-  <SlotCom>
-    <template #item="item1"> {{ item1.id }} </template>
-  </SlotCom>
-  <AppFetch></AppFetch>
 </template>
 
 <style>
