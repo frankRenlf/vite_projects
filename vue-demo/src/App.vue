@@ -1,16 +1,15 @@
 <script setup lang="ts">
 import { useCounterStore } from "@/stores/counter";
-import PiniaTest from "@/components/PiniaTest.vue";
-import SlotCom from "@/components/SlotCom.vue";
-import Fetch from "@/AppFetch.vue";
-import AppFetch from "@/AppFetch.vue";
 const uc = useCounterStore();
 </script>
 
 <template>
   <ul class="skip-links">
     <li>
-      <a href="/" ref="skipLink" class="skip-link">Skip to main content</a>
+      <router-link to="/" ref="skipLink" class="skip-link"
+        >Skip to main content</router-link
+      >
+      <h3>Pinia {{ uc.count }}</h3>
     </li>
   </ul>
   <h2>router-link</h2>
@@ -24,7 +23,9 @@ const uc = useCounterStore();
   <!--  <router-view></router-view>-->
   <router-view v-slot="{ Component }">
     <transition name="why">
-      <keep-alive :include="['AppFetch', 'App_transitionGroup1', 'App_transitionGroup2']">
+      <keep-alive
+        :include="['AppFetch', 'App_transitionGroup1', 'App_transitionGroup2']"
+      >
         <component :is="Component"></component>
       </keep-alive>
     </transition>
