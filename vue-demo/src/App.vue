@@ -1,15 +1,14 @@
 <script setup lang="ts">
 import { useCounterStore } from "@/stores/counter";
 const uc = useCounterStore();
-
 </script>
 
 <template>
   <ul class="skip-links">
     <li>
       <router-link to="/" ref="skipLink" class="skip-link"
-        >Skip to main content</router-link
-      >
+        >Skip to main content
+      </router-link>
       <h3>Pinia {{ uc.count }}</h3>
     </li>
   </ul>
@@ -42,7 +41,24 @@ const uc = useCounterStore();
   margin: 1em auto 1em -72px;
   opacity: 0;
 }
+
 .skip-link:hover {
+  opacity: 1;
+  background-color: white;
+  padding: 0.5em;
+  border: 1px solid black;
+}
+
+.skip-link-two {
+  white-space: nowrap;
+  top: 0;
+  position: fixed;
+  left: 50%;
+  margin: 1em auto 1em -72px;
+  opacity: 0;
+}
+
+.skip-link-two:hover {
   opacity: 1;
   background-color: white;
   padding: 0.5em;
