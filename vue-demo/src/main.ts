@@ -10,7 +10,7 @@ import router from "@/router";
 const app = createApp(App);
 app.use(i18n, {
   greetings: {
-    hello: "Bonjourxxxxxxxxxx!",
+    hello: "Bonjour, name!",
     hi: "what's up",
   },
 });

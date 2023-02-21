@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { useCounterStore } from "@/stores/counter";
+import {useCounterStore} from "@/stores/counter";
+
 const uc = useCounterStore();
 </script>
 
@@ -7,24 +8,24 @@ const uc = useCounterStore();
   <ul class="skip-links">
     <li>
       <router-link to="/" ref="skipLink" class="skip-link"
-        >Skip to main content
+      >Skip to main content
       </router-link>
       <h3>Pinia {{ uc.count }}</h3>
     </li>
   </ul>
   <h2>router-link</h2>
   <router-link to="/AppFetch">AppFetch</router-link>
-  <hr />
+  <hr/>
   <router-link to="/App_transitionGroup1">App_transitionGroup1</router-link>
-  <hr />
+  <hr/>
   <router-link to="/App_transitionGroup2">App_transitionGroup2</router-link>
-  <hr />
+  <hr/>
   <h2>router-view</h2>
   <!--  <router-view></router-view>-->
   <router-view v-slot="{ Component }">
     <transition name="why">
       <keep-alive
-        :include="['AppFetch', 'App_transitionGroup1', 'App_transitionGroup2']"
+          :include="['AppFetch', 'App_transitionGroup1', 'App_transitionGroup2']"
       >
         <component :is="Component"></component>
       </keep-alive>
@@ -49,6 +50,7 @@ const uc = useCounterStore();
   border: 1px solid black;
 }
 
+/*
 .skip-link-two {
   white-space: nowrap;
   top: 0;
@@ -64,4 +66,5 @@ const uc = useCounterStore();
   padding: 0.5em;
   border: 1px solid black;
 }
+*/
 </style>

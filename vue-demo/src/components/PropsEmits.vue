@@ -3,7 +3,13 @@
   <h3>{{ obtain.ps2 }}</h3>
   <button @click="method1">emits1</button>
 </template>
-
+<!--sledge definite habitat exaggerate celebrity
+inflate tutorial slip slippery narrator examine magnetic
+habitat habitat habitat slippery significance restriction
+distinguish -->
+<!--sledge definite habitat exaggerate celebrate celebrity
+inflate exaggerate slip slippery narrator examine magnetic
+distinguish abandon restriction-->
 <script setup lang="ts">
 import { Person } from "@/stores/Person";
 import { inject, reactive } from "vue";
